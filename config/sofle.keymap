@@ -87,16 +87,16 @@
         raise_layer {
             display-name = "raise";
 // ------------------------------------------------------------------------------------------------------------
-// | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                | LY0  | LY1  |  LY2  |  LY3 |  LY4  |  LY5  |
-// |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
-// |       | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-// |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
-//                |      |       |       |      |      |  |      | LY0  |      |       |      |
+// | BTCLR      | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                | LY0  | LY1  |  LY2  |  LY3 |  LY4  |  LY5  |
+// |            | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
+// |            | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+// | ZMKSTUDIO  | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+//                     |      |       |       |      |      |  |      | LY0  |      |       |      |
             bindings = <
 &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                  &tog BASE  &tog LOWER  &tog RAISE  &tog ADJUST &trans  &trans
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &kp PG_UP  &trans      &kp UP      &trans      &kp N0  &trans
 &trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                      &kp PG_DN  &kp LEFT    &kp DOWN    &kp RIGHT   &kp DEL &kp BSPC
-&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &trans      &trans      &trans      &trans  &trans
+&studio_unlock     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &trans      &trans      &trans      &trans  &trans
                         &trans       &trans       &trans       &trans        &trans  &tog BASE &trans     &trans      &trans      &trans
             >;
 
