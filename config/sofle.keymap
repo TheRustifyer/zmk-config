@@ -60,6 +60,12 @@
 #define RAISE 2
 #define ADJUST 3
 
+#define K_GOLD  &rgb_ug RGB_COLOR_HSB(128,100,100)
+#define K_WHITE &rgb_ug RGB_COLOR_HSB(128,100,100)
+#define K_BLUE  &rgb_ug RGB_COLOR_HSB(128,100,100)
+
+#define EXTPWR_T &ext_power EP_TOG
+
 // The caps word behavior behaves similar to a caps lock,
 // but will automatically deactivate when any key not in a continue list is pressed,
 // or if the caps word key is pressed again
@@ -129,7 +135,7 @@
                  &trans    &trans      &trans    &trans     &trans &trans     &trans    &trans   &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         raise_layer {
@@ -138,34 +144,37 @@
 // | BTCLR      | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                | LY0  | LY1  |  LY2  |  LY3 |  LY4  |  LY5  |
 // |            | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
 // |            | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-// | ZMKSTUDIO  | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+// |            | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
 //                     |      |       |       |      |      |  |      | LY0  |      |       |      |
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                  &to BASE  &to LOWER  &to RAISE  &to ADJUST &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &kp PG_UP  &trans      &kp UP      &trans      &kp N0  &trans
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                      &kp PG_DN  &kp LEFT    &kp DOWN    &kp RIGHT   &kp DEL &kp BSPC
-&studio_unlock     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &trans      &trans      &trans      &trans  &trans
-                        &trans       &trans       &trans       &trans        &trans  &tog BASE &trans     &trans      &trans      &trans
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                     &to BASE  &to LOWER  &to RAISE  &to ADJUST &trans  &trans
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                           &kp PG_UP  &trans      &kp UP      &trans      &kp N0  &trans
+&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                         &kp PG_DN  &kp LEFT    &kp DOWN    &kp RIGHT   &kp DEL &kp BSPC
+&none      &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans     &trans     &trans      &trans      &trans      &trans  &trans
+                        &trans       &trans       &trans       &trans        &trans  &tog BASE  &trans     &trans      &trans      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         adjust_layer {
-// ----------------------------------------------------------------------------------------------------------------------------
-// | BTCLR      |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  | LY0  | LY1  |  LY2  |  LY3 |  LY4  |  LY5  |      |
-// | EXTPWR     | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
-// |            | RGB_BRD | RGB_BRI |         |         |         |                  |      |      |       |      |       |       |
-// | ZMKSTUDIO  |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
-//                        |         |         |         |         |         | |      |      | LY0  |       |      |
             display-name = "config";
+// ----------------------------------------------------------------------------------------------------------------------------
+// | LY0    | LY1       | LY2         |  LY3      | LY4        | LY5        |                          | LY0           | LY1           |  LY2          |  LY3          |  LY4       |  LY5       |
+// | BT_PRV | BT_SEL 1  | BT_SEL 2    | BT_SEL 3  | BT_SEL 4   | BT_SEL 5   |                          |               |               |               |               |            |            |
+// | BT_NXT |           |             |           |            |            |                          | RGB_BRI       | RGB_HUI       | RGB_SAI       | RGB_SPI       |            |            |
+// | BT_CLR |           |             |           |            |            |   MUTE  |      | EXTPWR  | RGB_BRD       | RGB_HUD       | RGB_SAD       | RGB_SPD       |            | ZMK_STUDIO |
+//                      |             |           |            |            | RGB_EFD |      | RGB_EFF |               | K_BLUE        | K_GOLD        | K_WHITE       |
+
             bindings = <
-&bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &to BASE   &to LOWER  &to RAISE &to ADJUST  &trans  &trans
-&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &none &none &none &none &none &none
-&none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &none           &none           &none                                   &none &none &none &none &none &none
-&studio_unlock    &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &none &none &none &none &none &none
-                                  &none           &none           &none           &none            &none           &none  &tog BASE &none &none &none
+&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                  //*/            &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans       &trans
+&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4            //*/            &none           &none           &none           &none           &none        &none
+&bt BT_NXT  &none        &none        &none        &none        &none                   //*/            &rgb_ug RGB_BRU &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &none        &none
+&bt BT_CLR  &none        &none        &none        &none        &none        &kp C_MUTE //*/  EXTPWR_T  &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &none        &studio_unlock 
+                         &none        &none        &none        &none        &RGB_EFD   //*/  &RGB_EFF  &RGB_TOG        K_BLUE          K_GOLD          K_WHITE
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
     };
