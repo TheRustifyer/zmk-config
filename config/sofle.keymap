@@ -60,11 +60,14 @@
 #define RAISE 2
 #define ADJUST 3
 
-#define K_GOLD  &rgb_ug RGB_COLOR_HSB(128,100,100)
-#define K_WHITE &rgb_ug RGB_COLOR_HSB(128,100,100)
-#define K_BLUE  &rgb_ug RGB_COLOR_HSB(128,100,100)
+#define K_GOLD  RGB_COLOR_HSB(255,215,0)
+#define K_WHITE RGB_COLOR_HSB(255,255,255)
+#define K_BLUE  RGB_COLOR_HSB(0,0,255)
 
 #define EXTPWR_T &ext_power EP_TOG
+
+#define LED_EFF &rgb_ug RGB_EFF
+#define LED_EFR &rgb_ug RGB_EFR
 
 // The caps word behavior behaves similar to a caps lock,
 // but will automatically deactivate when any key not in a continue list is pressed,
@@ -160,18 +163,18 @@
         adjust_layer {
             display-name = "config";
 // ----------------------------------------------------------------------------------------------------------------------------
-// | LY0    | LY1       | LY2         |  LY3      | LY4        | LY5        |                          | LY0           | LY1           |  LY2          |  LY3          |  LY4       |  LY5       |
-// | BT_PRV | BT_SEL 1  | BT_SEL 2    | BT_SEL 3  | BT_SEL 4   | BT_SEL 5   |                          |               |               |               |               |            |            |
-// | BT_NXT |           |             |           |            |            |                          | RGB_BRI       | RGB_HUI       | RGB_SAI       | RGB_SPI       |            |            |
-// | BT_CLR |           |             |           |            |            |   MUTE  |      | EXTPWR  | RGB_BRD       | RGB_HUD       | RGB_SAD       | RGB_SPD       |            | ZMK_STUDIO |
-//                      |             |           |            |            | RGB_EFD |      | RGB_EFF |               | K_BLUE        | K_GOLD        | K_WHITE       |
+// | LY0    | LY1       | LY2         |  LY3       | LY4        | LY5        |                       | LY0           | LY1           |  LY2          |  LY3          |  LY4       |  LY5       |
+// | BT_PRV | BT_SEL 1  | BT_SEL 2    | BT_SEL 3   | BT_SEL 4   | BT_SEL 5   |                       |               |               |               |               |            |            |
+// | BT_NXT |           |             |            |            |            |                       | RGB_BRI       | RGB_HUI       | RGB_SAI       | RGB_SPI       |            |            |
+// | BT_CLR |           |             |            |            |            |   MUTE  |  | EXTPWR   | RGB_BRD       | RGB_HUD       | RGB_SAD       | RGB_SPD       |            | ZMK_STUDIO |
+//                      |             |            |            |            | RGB_EFD |  | RGB_EFF  | RGB_TOG       | K_BLUE        | K_GOLD        | K_WHITE       |
 
             bindings = <
-&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                  //*/            &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans       &trans
-&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4            //*/            &none           &none           &none           &none           &none        &none
-&bt BT_NXT  &none        &none        &none        &none        &none                   //*/            &rgb_ug RGB_BRU &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &none        &none
-&bt BT_CLR  &none        &none        &none        &none        &none        &kp C_MUTE //*/  EXTPWR_T  &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &none        &studio_unlock 
-                         &none        &none        &none        &none        &RGB_EFD   //*/  &RGB_EFF  &RGB_TOG        K_BLUE          K_GOLD          K_WHITE
+&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                                &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans       &trans
+&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &none           &none           &none           &none           &none        &none
+&bt BT_NXT  &none        &none        &none        &none        &none                                 &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &none        &none
+&bt BT_CLR  &none        &none        &none        &none        &none         &kp C_MUTE   EXTPWR_T   &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &none        &studio_unlock 
+                         &none        &none        &none        &none         LED_EFR      LED_EFF    &rgb_ug RGB_TOG &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -179,7 +182,3 @@
 
     };
 };
-    
-
-
-    
