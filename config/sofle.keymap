@@ -138,10 +138,10 @@
 // |      | UNDO | CUT  | COPY  | PASTE |      |      |        |       |      |  0    |  .    |  ,   |   \   |   =   |                     
 //               |      |       |       |      |      |        |       |      |       |       |      |                                     
             bindings = <
-&kp ESC    &trans       &trans       &trans       &trans       &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kpº KP_NUMBER_9  &kp KP_MINUS    &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kpº KP_NUMBER_6  &kp KP_ASTERISK &trans
-&kp CLCK   &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &trans                        &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kpº KP_NUMBER_3  &kp KP_PLUS     &trans
-&none      &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &kp KP_NUMBER_0  &kp DOT          &kpº KP_COMMA     &kp KP_SLASH    &kp ES_EQL
+&kp ESC    &trans       &trans       &trans       &trans       &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS    &trans
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_ASTERISK &trans
+&kp CLCK   &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &trans                        &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_PLUS     &trans
+&none      &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &kp KP_NUMBER_0  &kp DOT          &kp KP_COMMA     &kp KP_SLASH    &kp ES_EQL
                         &trans       &trans       &trans       &trans        &trans  &trans  &trans     &trans           &trans           &trans                                  
             >;
 
