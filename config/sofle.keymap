@@ -184,7 +184,7 @@ raise_layer {
             bindings = <
 &to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                               &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans   &trans
 &bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                         &none           &none           &none           &none           &none    &sys_reset
-&bt BT_NXT  &none        &none        &none        kp C_BRI_MIN &kp C_BRI_MAX                        &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI EXTPWR_T &bootloader
+&bt BT_NXT  &none        &none        &none        &kp C_BRI_MIN &kp C_BRI_MAX                        &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI EXTPWR_T &bootloader
 &bt BT_CLR  &none        &none        &kp C_VOL_UP &kp C_VOL_UP &kp C_BRI_UP   &kp C_MUTE   RGB_T    &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD OUT_T    &studio_unlock 
                          &none        &kp C_VOL_DN &kp C_VOL_DN &kp C_BRI_DN   LED_EFR      LED_EFF  &none           &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
             >;
