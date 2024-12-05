@@ -66,8 +66,10 @@
 #define K_WHITE RGB_COLOR_HSB(255,255,255)
 #define K_BLUE  RGB_COLOR_HSB(0,0,255)
 
+#define OUT_T    &out OUT_TOG
 #define EXTPWR_T &ext_power EP_TOG
 
+#define RGB_T   &rgb_ug RGB_TOG
 #define LED_EFF &rgb_ug RGB_EFF
 #define LED_EFR &rgb_ug RGB_EFR
 
@@ -107,87 +109,84 @@
         };
     };
 
-    behaviours {
-        
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "base layer";
+            display-name = "text/write";
 // ------------------------------------------------------------------------------------------------------------
-// |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   DEL |
-// |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
-// |  S/C  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   `   | ENTER |
-// | CTRL  |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  | ESC   |  N   |  M    |  ,    |  .   |   -   | SHIFT |
-//               | GUI | ALT  | CTRL | LOWER|  SPACE |  | ENTER | RAISE| CTRL  | ALT   | GUI  |
+// | ESC  |  1  |  2    |  3   |  4   |  5    |                  |  6    |  7   |  8   |  9    |   0   |   '   |
+// | TAB  |  Q  |  W    |  E   |  R   |  T    |                  |  Y    |  U   |  I   |  O    |   P   | BKSPC |
+// | S/C  |  A  |  S    |  D   |  F   |  G    |                  |  H    |  J   |  K   |  L    |   ´   | ENTER |
+// | CTRL |  Z  |  X    |  C   |  V   |  B    | MUTE  |  | ESC   |  N    |  M   |  ,   |  .    |   -   | SHIFT |
+//              | LCTRL | LGUI | LALT | LOWER | SPACE |  | SPACE | RAISE | RALT | RGUI | RCTRL |
+
             bindings = <
-&kp ESC          &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0    &kp DEL
-&kp TAB          &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P     &kp BSPC
-&mt LSHIFT CLCK  &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp GRAVE &kp RET
-&kp LCTRL        &kp Z  &kp X    &kp C    &kp V     &kp B    &kp C_MUTE   &kp ESC    &kp N  &kp M     &kp COMMA &kp DOT  &kp MINUS &kp RSHFT
-                        &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp SPACE  &kp RET    &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
+&kp ESC          &kp N1 &kp N2    &kp N3    &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0      &kp SQT
+&kp TAB          &kp Q  &kp W     &kp E     &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P       &kp BSPC
+&mt LSHIFT CLCK  &kp A  &kp S     &kp D     &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp ES_ACUT &kp RET
+&kp LCTRL        &kp Z  &kp X     &kp C     &kp V     &kp B      &kp C_MUTE &kp ESC    &kp N  &kp M     &kp COMMA &kp DOT  &kp MINUS   &kp RSHFT
+                        &kp LCTRL &kp LGUI  &kp LALT  &mo LOWER  &kp SPACE  &kp SPACE  &mo RAISE  &kp RALT &kp RGUI  &kp RCTRL
             >;
 
             sensor-bindings = <&rot_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
-            display-name = "lower";
+            display-name = "sp/num_pad";
 // ------------------------------------------------------------------------------------------------------------
-// | ESC  |      |      |       |       |      |                       |      |  7    |  8    |  9   |   -   |       |                   
-// |      | INS  | PSCR | GUI   |       |      |                       |      |  4    |  5    |  6   |   *   |       |                     
-// | CAPS | ALT  | CTRL | SHIFT |       |      |                       |      |  1    |  2    |  3   |   +   |       |                     
-// |      | UNDO | CUT  | COPY  | PASTE |      |      |        |       |      |  0    |  .    |  ,   |   \   |   =   |                     
-//               |      |       |       |      |      |        |       |      |       |       |      |                                     
+// | ESC   |      |      |       |       |      |                       |      |  7    |  8    |  9   |   -   |       |                   
+// |       | INS  | PSCR | GUI   |       |      |                       |      |  4    |  5    |  6   |   *   |       |                     
+// | CAPS  | ALT  | CTRL | SHIFT |       |      |                       |      |  1    |  2    |  3   |   +   |       |                     
+// | LCTRL | UNDO | CUT  | COPY  | PASTE |      |      |        |       |      |  0    |  .    |  ,   |   \   |   =   |                     
+//                |      |       |       |      |      |        |       |      |       |       |      |                                     
             bindings = <
 &kp ESC    &trans       &trans       &trans       &trans       &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS    &trans
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_ASTERISK &trans
 &kp CLCK   &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &trans                        &trans     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_PLUS     &trans
-&none      &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &kp KP_NUMBER_0  &kp DOT          &kp KP_COMMA     &kp KP_SLASH    &kp ES_EQL
-                        &trans       &trans       &trans       &trans        &trans  &trans  &trans     &trans           &trans           &trans                                  
+&kp LCTRL  &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans     &kp KP_NUMBER_0  &kp DOT          &kp KP_COMMA     &kp KP_SLASH    &kp ES_EQL
+                        &kp LCTRL    &kp LGUI     &kp LALT     &trans        &trans  &trans  &trans     &trans           &trans           &trans                                  
             >;
 
             sensor-bindings = <&rot_kp C_VOL_UP C_VOL_DN>;
         };
 
 raise_layer {
-            display-name = "raise";
+            display-name = "symb/nav";
 
-            // TODO: Some binds are waiting for shifted keycode support.
-            // ------------------------------------------------------------------------------------------------------------
-            // | ESC   |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7  |  F8   |  F9  |  F10  |  F11  |
-            // |   [   |  <  |  ¡  |  !   |  >   |  ]   |                   |      |      |       |      |       |       |
-            // |   {   |  (  |  ¿  |  ?   |  )   |  }   |                   |      |      |       | PGUP |   ^   | PGDN  |
-            // |       |     |     |      |  ~   |  Ç   |        |  |       |      |      |       |  <-  |   v   |   ->  |
-            //               |     |      |      |      |        |  |       |      |      |       |      |                 
+// TODO: Some binds are waiting for shifted keycode support.
+// ------------------------------------------------------------------------------------------------------------
+// | ESC   |  F1 |  F2 |  F3  |  F4  |  F5  |                       |  F6  |  F7  |  F8   |  F9   |  F10  |  F11  |
+// |   [   |  <  |  ¡  |  !   |  >   |  ]   |                       |   |  |  [   |   ]   | HOME  |       | END   |
+// |   {   |  (  |  ¿  |  ?   |  )   |  }   |                       |   ~  |  {   |   }   | PGUP  |   ^   | PGDN  |
+// |       |     |     |      |  ~   |  Ç   |        |      |       |   ñ  |  <   |   >   |  <-   |   v   |   ->  |
+//               |     |      |      |      |        |      |       |      |      |       | KMENU |                 
 
             bindings = <
             
-&kp ESC      &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                         &kp F6  &kp F7  &kp F8  &kp F9    &kp F10   &kp F11         
-&kp ES_LBRC  &kp ES_LABK  &kp ES_IEXL  &kp ES_EXLM  &kp ES_RABK  &kp ES_RBRC                    &trans  &trans  &kp UP  &trans    &trans    &trans        
-&kp ES_LCBR  &kp ES_LPRN  &kp ES_IQUE  &kp ES_QUES  &kp ES_RPRN  &kp ES_RCBR                    &trans  &trans  &trans  &kp PG_UP &kp UP    &kp PG_DN          
-&trans       &trans       &trans       &trans       &kp ES_TILD  &kp ES_CCED  &trans    &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT              
-                          &trans       &trans       &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans            
+&kp ESC      &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                         &kp F6    &kp F7       &kp F8      &kp F9    &kp F10   &kp F11         
+&kp ES_LBRC  &kp ES_LABK  &kp ES_IEXL  &kp ES_EXLM  &kp ES_RABK  &kp ES_RBRC                    &kp PIPE  &kp ES_LBRC  &kp ES_RBCR &kp HOME  &trans    &KP END        
+&kp ES_LCBR  &kp ES_LPRN  &kp ES_IQUE  &kp ES_QUES  &kp ES_RPRN  &kp ES_RCBR                    &kp TILDE &kp ES_LCBR  &kp ES_RCBR &kp PG_UP &kp UP    &kp PG_DN          
+&trans       &trans       &trans       &trans       &kp ES_TILD  &kp ES_CCED  &trans    &trans  &kp NTIL  &kp ES_LABK  &kp ES_RABK &kp LEFT  &kp DOWN  &kp RIGHT              
+                          &trans       &trans       &trans       &trans       &trans    &trans  &trans    &trans       &trans      &K_MENU            
             >;
         };
 
         adjust_layer {
             display-name = "config";
 // ----------------------------------------------------------------------------------------------------------------------------
-// | LY0    | LY1       | LY2         |  LY3       | LY4        | LY5        |                       | LY0           | LY1           |  LY2          |  LY3          |  LY4       |  LY5       |
-// | BT_PRV | BT_SEL 1  | BT_SEL 2    | BT_SEL 3   | BT_SEL 4   | BT_SEL 5   |                       |               |               |               |               |            | SYS_RESET  |
-// | BT_NXT |           |             |            |            |            |                       | RGB_BRI       | RGB_HUI       | RGB_SAI       | RGB_SPI       |            | BOOTLOADER |
-// | BT_CLR |           |             |            |            |            |   MUTE  |  | EXTPWR   | RGB_BRD       | RGB_HUD       | RGB_SAD       | RGB_SPD       | OUTPUT_TOG | ZMK_STUDIO |
-//                      |             |            |            |            | RGB_EFD |  | RGB_EFF  | RGB_TOG       | K_BLUE        | K_GOLD        | K_WHITE       |
+// | LY0    | LY1      | LY2      |  LY3     | LY4      | LY5      |                      | LY0     | LY1     |  LY2    |  LY3    |  LY4       |  LY5       |
+// | BT_PRV | BT_SEL 1 | BT_SEL 2 | BT_SEL 3 | BT_SEL 4 | BT_SEL 5 |                      |         |         |         |         |            | SYS_RESET  |
+// | BT_NXT |          |          |          | BRI_MIN  | BRI_MAX  |                      | RGB_BRI | RGB_HUI | RGB_SAI | RGB_SPI | EXTPWR_TOG | BOOTLOADER |
+// | BT_CLR |          |          | K_VOL_UP | VOL_UP   | BRI_UP   |   MUTE  |  | RGB_TOG | RGB_BRD | RGB_HUD | RGB_SAD | RGB_SPD | OUTPUT_TOG | ZMK_STUDIO |
+//                     |          | K_VOL_DN | VOL_DN   | BRI_DN   | RGB_EFD |  | RGB_EFF |         | K_BLUE  | K_GOLD  | K_WHITE |
 
             bindings = <
-&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                                &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans       &trans
-&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &none           &none           &none           &none           &none        &sys_reset
-&bt BT_NXT  &none        &none        &none        &none        &none                                 &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &none        &bootloader
-&bt BT_CLR  &none        &none        &none        &none        &none         &kp C_MUTE   EXTPWR_T   &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &out OUT_TOG &studio_unlock 
-                         &none        &none        &none        &none         LED_EFR      LED_EFF    &rgb_ug RGB_TOG &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
+&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                               &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans   &trans
+&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                         &none           &none           &none           &none           &none    &sys_reset
+&bt BT_NXT  &none        &none        &none        kp C_BRI_MIN &kp C_BRI_MAX                        &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI EXTPWR_T &bootloader
+&bt BT_CLR  &none        &none        &kp C_VOL_UP &kp C_VOL_UP &kp C_BRI_UP   &kp C_MUTE   RGB_T    &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD OUT_T    &studio_unlock 
+                         &none        &kp C_VOL_DN &kp C_VOL_DN &kp C_BRI_DN   LED_EFR      LED_EFF  &none           &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
             >;
 
             sensor-bindings = <&rgb_encoder>;
