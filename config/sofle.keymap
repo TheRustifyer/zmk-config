@@ -133,13 +133,13 @@
         };
 
         lower_layer {
-            display-name = "sp/num_pad";
+            display-name = "sp/numpad";
 // ------------------------------------------------------------------------------------------------------------
-// | ESC   |      |      |       |       |      |                       |      |  7    |  8    |  9   |   -   |       |                   
-// |       | INS  | PSCR | GUI   |       |      |                       |      |  4    |  5    |  6   |   *   |       |                     
-// | CAPS  | ALT  | CTRL | SHIFT |       |      |                       |      |  1    |  2    |  3   |   +   |       |                     
-// | LCTRL | UNDO | CUT  | COPY  | PASTE |      |      |        |       |      |  0    |  .    |  ,   |   \   |   =   |                     
-//                |      |       |       |      |      |        |       |      |       |       |      |                                     
+// | ESC   |      |       |       |       |      |                       |      |  7    |  8    |  9   |   -   |       |                   
+// | TAB   | INS  | PSCR  | GUI   |       |      |                       |      |  4    |  5    |  6   |   *   |       |                     
+// | CAPS  | ALT  | CTRL  | SHIFT |       |      |                       |      |  1    |  2    |  3   |   +   |       |                     
+// | LCTRL | UNDO | CUT   | COPY  | PASTE |      |      |        |       |      |  0    |  .    |  ,   |   \   |   =   |                     
+//                | LCTRL | LGUI  | LALT  |      |      |        |       |      |       |       |      |                                     
             bindings = <
 &kp ESC    &trans       &trans       &trans       &trans       &trans                        &trans     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS    &trans
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_ASTERISK &trans
@@ -151,24 +151,23 @@
             sensor-bindings = <&rot_kp C_VOL_UP C_VOL_DN>;
         };
 
-raise_layer {
-            display-name = "symb/nav";
+        raise_layer {
+            display-name = "symb/fns";
 
 // TODO: Some binds are waiting for shifted keycode support.
 // ------------------------------------------------------------------------------------------------------------
-// | ESC   |  F1 |  F2 |  F3  |  F4  |  F5  |                       |  F6  |  F7  |  F8   |  F9   |  F10  |  F11  |
-// |   [   |  <  |  ¡  |  !   |  >   |  ]   |                       |   |  |  [   |   ]   | HOME  |       | END   |
-// |   {   |  (  |  ¿  |  ?   |  )   |  }   |                       |   ~  |  {   |   }   | PGUP  |   ^   | PGDN  |
-// |       |     |     |      |  ~   |  Ç   |        |      |       |   ñ  |  <   |   >   |  <-   |   v   |   ->  |
+// |  F1   | F2  |  F3 |  F4  |  F5  |  F6  |                       |  F7  |  F8  |  F9   |  F10  |  F11  | F12   |
+// |       |     |     |      |      |      |                       |   |  |  [   |   ]   | HOME  |       | END   |
+// |       |     |     |      |      |      |                       |   ~  |  {   |   }   | PGUP  |   ^   | PGDN  |
+// |       |     |     |      |      |      |        |      |       |   ñ  |  <   |   >   |  <-   |   v   |   ->  |
 //               |     |      |      |      |        |      |       |      |      |       | KMENU |                 
 
             bindings = <
-            
-&kp ESC      &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                         &kp F6      &kp F7       &kp F8      &kp F9    &kp F10   &kp F11         
-&kp ES_LBRC  &kp ES_LABK  &kp ES_IEXL  &kp ES_EXLM  &kp ES_RABK  &kp ES_RBRC                    &kp PIPE    &kp ES_LBRC  &kp ES_RBRC &kp HOME  &trans    &kp END        
-&kp ES_LCBR  &kp ES_LPRN  &kp ES_IQUE  &kp ES_QUES  &kp ES_RPRN  &kp ES_RCBR                    &kp TILDE   &kp ES_LCBR  &kp ES_RCBR &kp PG_UP &kp UP    &kp PG_DN          
-&trans       &trans       &trans       &trans       &kp ES_TILD  &kp ES_CCED  &trans    &trans  &kp ES_TILD &kp ES_LABK  &kp ES_RABK &kp LEFT  &kp DOWN  &kp RIGHT              
-                          &trans       &trans       &trans       &trans       &trans    &trans  &trans      &trans       &trans      &kp K_MENU            
+&kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6                         &kp F7       &kp F8       &kp F9      &kp F10   &kp F11   &kp F12     
+&trans       &trans       &trans       &trans       &trans       &trans                         &kp PIPE     &kp ES_LBRC  &kp ES_RBRC &kp HOME  &trans    &kp END        
+&trans       &trans       &trans       &trans       &trans       &trans                         &kp ES_TILD  &kp ES_LCBR  &kp ES_RCBR &kp PG_UP &kp UP    &kp PG_DN          
+&trans       &trans       &trans       &trans       &trans       &trans       &trans    &trans  &kp ES_NTIL  &kp ES_LABK  &kp ES_RABK &kp LEFT  &kp DOWN  &kp RIGHT              
+                          &trans       &trans       &trans       &trans       &trans    &trans  &trans       &trans       &trans      &kp K_MENU            
             >;
         };
 
@@ -177,16 +176,16 @@ raise_layer {
 // ----------------------------------------------------------------------------------------------------------------------------
 // | LY0    | LY1      | LY2      |  LY3     | LY4      | LY5      |                      | LY0     | LY1     |  LY2    |  LY3    |  LY4       |  LY5       |
 // | BT_PRV | BT_SEL 1 | BT_SEL 2 | BT_SEL 3 | BT_SEL 4 | BT_SEL 5 |                      |         |         |         |         |            | SYS_RESET  |
-// | BT_NXT |          |          |          | BRI_MIN  | BRI_MAX  |                      | RGB_BRI | RGB_HUI | RGB_SAI | RGB_SPI | EXTPWR_TOG | BOOTLOADER |
-// | BT_CLR |          |          | K_VOL_UP | VOL_UP   | BRI_UP   |   MUTE  |  | RGB_TOG | RGB_BRD | RGB_HUD | RGB_SAD | RGB_SPD | OUTPUT_TOG | ZMK_STUDIO |
-//                     |          | K_VOL_DN | VOL_DN   | BRI_DN   | RGB_EFD |  | RGB_EFF |         | K_BLUE  | K_GOLD  | K_WHITE |
+// | BT_NXT |          |          |          |          |          |                      | RGB_BRI | RGB_HUI | RGB_SAI | RGB_SPI | EXTPWR_TOG | BOOTLOADER |
+// | BT_CLR |          | BRI_MAX  | BRI_UP   | VOL_UP   |          |   MUTE  |  | RGB_TOG | RGB_BRD | RGB_HUD | RGB_SAD | RGB_SPD | OUTPUT_TOG | ZMK_STUDIO |
+//                     | BRI_MIN  | BRI_DN   | VOL_DN   |          | RGB_EFD |  | RGB_EFF |         | K_BLUE  | K_GOLD  | K_WHITE |
 
             bindings = <
-&to BASE    &to LOWER    &to RAISE    &to ADJUST   &trans       &trans                               &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans   &trans
-&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                         &none           &none           &none           &none           &none    &sys_reset
-&bt BT_NXT  &none        &none        &none        &kp C_BRI_MIN &kp C_BRI_MAX                        &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI EXTPWR_T &bootloader
-&bt BT_CLR  &none        &none        &kp C_VOL_UP &kp C_VOL_UP &kp C_BRI_UP   &kp C_MUTE   RGB_T    &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD OUT_T    &studio_unlock 
-                         &none        &kp C_VOL_DN &kp C_VOL_DN &kp C_BRI_DN   LED_EFR      LED_EFF  &none           &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
+&to BASE    &to LOWER    &to RAISE     &to ADJUST   &trans        &trans                              &to BASE        &to LOWER       &to RAISE       &to ADJUST      &trans   &trans
+&bt BT_PRV  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4                        &none           &none           &none           &none           &none    &sys_reset
+&bt BT_NXT  &none        &none         &none        &none         &none                               &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI EXTPWR_T &bootloader
+&bt BT_CLR  &none        &kp C_BRI_MAX &kp C_BRI_UP &kp C_VOL_UP  &none        &kp C_MUTE   RGB_T    &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD OUT_T    &studio_unlock 
+                         &kp C_BRI_MIN &kp C_BRI_DN &kp C_VOL_DN  &none        LED_EFR      LED_EFF  &none           &rgb_ug K_BLUE  &rgb_ug K_GOLD  &rgb_ug K_WHITE
             >;
 
             sensor-bindings = <&rgb_encoder>;
