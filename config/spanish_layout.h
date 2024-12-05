@@ -23,7 +23,7 @@
 #define ES_8 NUMBER_8 // 8
 #define ES_9 NUMBER_9 // 9
 #define ES_0 NUMBER_0 // 0
-#define ES_QUOT MINUS // '
+#define MINUS MINUS // '
 #define ES_IEXL EQUAL // ¡
 // Row 2
 #define ES_Q Q       // Q
